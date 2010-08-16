@@ -110,8 +110,15 @@ module Disqus
       #
       # * <tt>:forum_api_key</tt> - the API key for the forum
       # * <tt>:forum_id</tt> - the unique id of the forum
+      #
+      # Optional:
+      #
+      # * <tt>:limit</tt> - Number of entries that should be included in the response (defaults to Disqus::defaults[:limit])
+      # * <tt>:start</tt> - Starting point for the query (defaults to Disqus::defaults[:start])
       def get_thread_list(opts = {})
-        JSON.parse(get('get_thread_list', :forum_id => opts[:forum_id], :forum_api_key => opts[:forum_api_key]))
+        opts[:start] ||= Disqus::defaults[:start]
+        opts[:limit] ||= Disqus::defaults[:limit]
+        JSON.parse(get('get_thread_list', :forum_id => opts[:forum_id], :forum_api_key => opts[:forum_api_key], :start => opts[:start], :limit => opts[:limit]))
       end
       
       # Returns a hash having thread_ids as keys and 2-element arrays as

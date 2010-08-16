@@ -32,6 +32,8 @@ module Disqus
     :hide_mods       => true,
     :num_items       => 15,
     :show_powered_by => true,
+    :start           => 0,
+    :limit           => 25,
     :orientation     => "horizontal"
   }
   
@@ -44,6 +46,8 @@ module Disqus
   #  :hide_mods       => true,
   #  :num_items       => 15,
   #  :show_powered_by => true,
+  #  :start           => 0,
+  #  :limit           => 25,
   #  :orientation     => "horizontal"
   def self.defaults
     @defaults
